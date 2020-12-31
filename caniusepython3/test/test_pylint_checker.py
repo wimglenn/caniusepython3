@@ -21,7 +21,7 @@ try:
     import sys
     import tokenize
 
-    from astroid import test_utils
+    from astroid import builder
     from pylint import testutils
     from pylint.testutils import CheckerTestCase
 
@@ -58,7 +58,7 @@ class StrictPython3CheckerTest(CheckerTestCase):
     CHECKER_CLASS = StrictPython3Checker
 
     def check_not_builtin(self, builtin_name, message):
-        node = test_utils.extract_node(builtin_name + '  #@')
+        node = builder.extract_node(builtin_name + '  #@')
         with self.assertAddsMessages(testutils.Message(message, node=node)):
             self.checker.visit_name(node)
 
@@ -67,7 +67,7 @@ class StrictPython3CheckerTest(CheckerTestCase):
         self.check_not_builtin('open', 'open-builtin')
 
     def test_dict_comprehension(self):
-        node = test_utils.extract_node('{e:"1" for e in ["one", "two"]} #@')
+        node = builder.extract_node('{e:"1" for e in ["one", "two"]} #@')
         with self.assertNoMessages():
             self.checker.visit_name(node)
 
