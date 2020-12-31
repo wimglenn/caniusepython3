@@ -93,7 +93,7 @@ def blockers(project_names, index_url=pypi.PYPI_INDEX_URL):
                     # can't port.
                     del reasons[parent]
                     continue
-                log.info('Dependencies of {0}: {1}'.format(project, deps))
+                log.info('Dependencies of {0}: {1}'.format(parent, deps))
                 unchecked_deps = []
                 for dep in deps:
                     if dep in evaluated:
