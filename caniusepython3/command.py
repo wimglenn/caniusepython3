@@ -17,7 +17,6 @@ from __future__ import unicode_literals
 import setuptools
 import sys
 
-import caniusepython3 as ciu
 import caniusepython3.__main__ as ciu_main
 from caniusepython3 import pypi
 
